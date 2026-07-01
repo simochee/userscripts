@@ -15,6 +15,11 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      # Single source of truth for the distribution branch. Read by each
+      # package's vite.config.ts (for @downloadURL/@updateURL) and by the sync
+      # step below.
+      DIST_BRANCH: dist
     steps:
       - name: Check out main
         uses: actions/checkout@v4
@@ -44,8 +49,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # Fetch and mount the pre-existing orphan dist branch as a worktree.
-          git fetch origin dist
-          git worktree add ../dist-branch origin/dist
+          git fetch origin "$DIST_BRANCH"
+          git worktree add ../dist-branch "origin/$DIST_BRANCH"
 
           # Replace the worktree contents with the freshly built userscripts.
           # Keep .git; drop previous *.user.js so removed packages disappear too.
@@ -53,11 +58,11 @@ jobs:
           cp "${built[@]}" ../dist-branch/
 
           cd ../dist-branch
-          git checkout -B dist
+          git checkout -B "$DIST_BRANCH"
           git add -A
           if git diff --cached --quiet; then
             echo "No changes to publish."
           else
             git commit -m "chore: sync userscripts from ${GITHUB_SHA}"
-            git push origin dist
+            git push origin "$DIST_BRANCH"
           fi

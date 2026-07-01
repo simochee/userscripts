@@ -37,8 +37,11 @@ Greasy Fork from the `dist` branch.
 ## Per-package vite.config.ts shape
 
 `monkey({ entry, build: { fileName: "<name>.user.js" }, userscript: {...} })`.
-`@downloadURL`/`@updateURL` MUST be:
-`https://raw.githubusercontent.com/simochee/userscripts/dist/<name>.user.js`
+`@downloadURL`/`@updateURL` are built from env with local fallbacks:
+`https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${DIST_BRANCH}/<name>.user.js`
+where `GITHUB_REPOSITORY` (GitHub-injected in CI) defaults to `simochee/userscripts`
+and `DIST_BRANCH` (set by release.yml) defaults to `dist`. So a plain local `nr build`
+still produces valid URLs; CI overrides them to track the actual repo/branch.
 The Plop template (`plop-templates/userscript/vite.config.ts.hbs`) is the source of
 truth for this shape — keep it and `packages/hello-example/vite.config.ts` in sync.
 
