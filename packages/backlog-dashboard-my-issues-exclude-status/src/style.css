@@ -1,0 +1,23 @@
+body:has(#row_filter_resolve:checked) {
+    #issueList tr:has(.status--3) {
+        display: none;
+    }
+}
+
+body:has(#row_filter_open:checked) {
+    #issueList tr:has(.status--1) {
+        display: none;
+    }
+}
+
+#issueListMenu {
+    input[name="row_filter"] {
+        display: none;
+    }
+
+    input[name="row_filter"]:checked + label {
+        background-color: var(--defaultColorAccent);
+        color: var(--backgroundColorSchemeBase);
+        text-decoration: none;
+    }
+}
