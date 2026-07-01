@@ -17,7 +17,7 @@ export default defineConfig({
 				name: "Hello Example",
 				namespace: "https://github.com/simochee/userscripts",
 				description: "Example userscript demonstrating the build setup.",
-				version: "1.0.0",
+				version: "2026.07.02",
 				match: ["https://example.com/*"],
 				grant: [],
 				downloadURL,

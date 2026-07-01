@@ -5,6 +5,15 @@
  * @param {import('plop').NodePlopAPI} plop
  */
 export default function (plop) {
+	// Today's date as YYYY.MM.DD, used as the initial userscript @version.
+	plop.setHelper("version", () => {
+		const now = new Date();
+		const year = now.getFullYear();
+		const month = String(now.getMonth() + 1).padStart(2, "0");
+		const day = String(now.getDate()).padStart(2, "0");
+		return `${year}.${month}.${day}`;
+	});
+
 	plop.setGenerator("userscript", {
 		description: "Create a new userscript package",
 		prompts: [
