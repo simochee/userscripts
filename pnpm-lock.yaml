@@ -50,6 +50,9 @@ importers:
 
   packages/backlog-dashboard-my-issues-row-color:
     devDependencies:
+      shared:
+        specifier: workspace:*
+        version: link:../shared
       vite:
         specifier: 'catalog:'
         version: 8.1.2(@types/node@26.0.1)

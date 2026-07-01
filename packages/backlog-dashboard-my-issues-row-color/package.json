@@ -8,6 +8,7 @@
 		"build": "vite build"
 	},
 	"devDependencies": {
+		"shared": "workspace:*",
 		"vite": "catalog:",
 		"vite-plugin-monkey": "catalog:"
 	}
