@@ -1,0 +1,49 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Set up toolchain
+        uses: jdx/mise-action@v2
+
+      - name: Install dependencies
+        run: ni --frozen
+
+      - name: Build all packages
+        run: nr build
+
+      - name: Sync built userscripts to the dist branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch and mount the pre-existing orphan dist branch as a worktree.
+          git fetch origin dist
+          git worktree add ../dist-branch origin/dist
+
+          # Replace the worktree contents with the freshly built userscripts.
+          # Keep .git; drop previous *.user.js so removed packages disappear too.
+          find ../dist-branch -maxdepth 1 -name '*.user.js' -delete
+          cp packages/*/dist/*.user.js ../dist-branch/
+
+          cd ../dist-branch
+          git checkout -B dist
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+          else
+            git commit -m "chore: sync userscripts from ${GITHUB_SHA}"
+            git push origin dist
+          fi
