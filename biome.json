@@ -5,7 +5,7 @@
 	"formatter": { "enabled": true },
 	"linter": {
 		"enabled": true,
-		"rules": { "recommended": true }
+		"rules": { "preset": "recommended" }
 	},
 	"assist": { "actions": { "source": { "organizeImports": "on" } } }
 }
