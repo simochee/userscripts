@@ -1,0 +1,63 @@
+#issueList tbody tr {
+    background-color: color-mix(
+        in srgb,
+        var(--defaultColorLink) 10%,
+        transparent
+    );
+
+    &:has(.status--1) {
+        --defaultColorLink: var(--statusColor-1);
+    }
+
+    &:has(.status--2) {
+        --defaultColorLink: var(--statusColor-2);
+    }
+
+    &:has(.status--3) {
+        --defaultColorLink: var(--statusColor-3);
+    }
+
+    &:has(.status--4) {
+        --defaultColorLink: var(--statusColor-4);
+    }
+
+    &:has(.status--custom-1) {
+        --defaultColorLink: var(--commonColorRed);
+    }
+
+    &:has(.status--custom-2) {
+        --defaultColorLink: var(--commonColorOrange);
+    }
+
+    &:has(.status--custom-3) {
+        --defaultColorLink: var(--commonColorPink);
+    }
+
+    &:has(.status--custom-4) {
+        --defaultColorLink: var(--commonColorPurple);
+    }
+
+    &:has(.status--custom-5) {
+        --defaultColorLink: var(--commonColorAcua);
+    }
+
+    &:has(.status--custom-6) {
+        --defaultColorLink: var(--commonColorGreen);
+    }
+
+    &:has(.status--custom-7) {
+        --defaultColorLink: var(--commonColorLime);
+    }
+
+    &:has(.status--custom-8) {
+        --defaultColorLink: var(--commonColorYellow);
+    }
+
+    &:has(.status--custom-9) {
+        --defaultColorLink: var(--commonColorShockingPink);
+    }
+
+    &:has(.status--custom-10) {
+        --defaultColorLink: var(--commonColorBlack);
+    }
+}

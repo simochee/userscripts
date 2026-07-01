@@ -1,0 +1,14 @@
+{
+  "name": "backlog-dashboard-my-issues-row-color",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "catalog:",
+    "vite-plugin-monkey": "catalog:"
+  }
+}
