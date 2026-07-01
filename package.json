@@ -5,7 +5,13 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "26"
+			"version": "26.2.0",
+			"onFail": "download"
+		},
+		"packageManager": {
+			"name": "pnpm",
+			"version": "11.6.0",
+			"onFail": "download"
 		}
 	},
 	"scripts": {

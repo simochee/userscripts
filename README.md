@@ -1,7 +1,7 @@
 # userscripts
 
-[![Node.js](https://img.shields.io/badge/Node.js-26-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![Node.js](https://img.shields.io/badge/Node.js-26.2.0-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-11.6.0-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![vite-plugin-monkey](https://img.shields.io/badge/vite--plugin--monkey-8-FFB300)](https://github.com/lisonge/vite-plugin-monkey)
 [![Biome](https://img.shields.io/badge/Biome-2-60A5FA?logo=biome&logoColor=white)](https://biomejs.dev/)
@@ -15,15 +15,21 @@ A pnpm-workspace monorepo for authoring userscripts with
 
 ## Requirements
 
-- Node.js 26
-- pnpm 11
-- [@antfu/ni](https://github.com/antfu-collective/ni) (commands below use it)
+- [mise](https://mise.jdx.dev/) — provisions the toolchain (Node.js, pnpm,
+  [@antfu/ni](https://github.com/antfu-collective/ni)) pinned by this repo
+
+Node.js 26 and pnpm are declared in `package.json` `devEngines` with
+`onFail: "download"`, so pnpm fetches the matching versions on demand as well.
 
 ## Setup
 
 ```bash
-ni
+mise install
 ```
+
+This installs the pinned toolchain; a mise `postinstall` hook then runs `ni`
+to install the workspace dependencies. To install dependencies again later,
+run `ni` directly.
 
 ## Creating a new userscript
 
