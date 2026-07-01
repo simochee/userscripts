@@ -5,5 +5,9 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts"
+	},
+	"devDependencies": {
+		"vite": "catalog:",
+		"vite-plugin-monkey": "catalog:"
 	}
 }
