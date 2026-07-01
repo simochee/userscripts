@@ -7,6 +7,11 @@ on:
 permissions:
   contents: write
 
+# Serialize releases so overlapping runs never race on pushing to `dist`.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
