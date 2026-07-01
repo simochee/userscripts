@@ -1,0 +1,21 @@
+{
+	"name": "userscripts",
+	"private": true,
+	"type": "module",
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "26"
+		}
+	},
+	"scripts": {
+		"build": "pnpm -r build",
+		"check": "biome check --write .",
+		"new": "plop"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "catalog:",
+		"plop": "catalog:",
+		"typescript": "catalog:"
+	}
+}
