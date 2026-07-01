@@ -43,7 +43,7 @@ where `GITHUB_REPOSITORY` (GitHub-injected in CI) defaults to `simochee/userscri
 and `DIST_BRANCH` (set by release.yml) defaults to `dist`. So a plain local `nr build`
 still produces valid URLs; CI overrides them to track the actual repo/branch.
 The Plop template (`plop-templates/userscript/vite.config.ts.hbs`) is the source of
-truth for this shape — keep it and `packages/hello-example/vite.config.ts` in sync.
+truth for this shape; new packages are scaffolded from it via `nr new`.
 
 ## Release / distribution
 
@@ -57,4 +57,3 @@ truth for this shape — keep it and `packages/hello-example/vite.config.ts` in 
 - `packages/<name>/` — one userscript (package.json, tsconfig.json extends
   `../../tsconfig.base.json`, vite.config.ts, src/main.ts).
 - `plopfile.mjs` + `plop-templates/userscript/` — scaffold.
-- `docs/superpowers/{specs,plans}/` — design specs and implementation plans.
